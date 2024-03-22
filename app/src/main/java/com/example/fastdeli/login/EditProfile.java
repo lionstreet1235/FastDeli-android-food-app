@@ -81,9 +81,9 @@ public class EditProfile extends AppCompatActivity {
 
         //set sự kiện nhấn
         StorageReference profileRef=storageReference.child("users"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener((OnSuccessListener)(uri)->{
-            Picasso
-                }
+//        profileRef.getDownloadUrl().addOnSuccessListener((OnSuccessListener)(uri)->{
+//            Picasso
+//                }
 
 
         profileImageView.setOnClickListener(new View.OnClickListener() {

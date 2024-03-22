@@ -1,14 +1,12 @@
 package com.example.fastdeli.model;
 
-import com.example.fastdeli.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartM {
+public class Cart {
     private List<Product> productList;
 
-    public CartM() {
+    public Cart() {
         productList = new ArrayList<>();
     }
 

@@ -1,22 +1,30 @@
 package com.example.fastdeli.model;
 
-public class Product {
-    private  String name;
-    private  double price;
-    private  String detail;
-    private String image;
 
+
+public class Product {
+    private String name;
+    private Double cost;
+    private String detail;
+    private String image;
     private int quantity;
+
+    public Product() {
+    }
+
+    public Product(String name, Double cost, String detail, String image) {
+        this.name = name;
+        this.cost = cost;
+        this.detail = detail;
+        this.image = image;
+
+    }
 
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Product(int quantity) {
         this.quantity = quantity;
     }
 
@@ -28,12 +36,12 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public Double getCost() {
+        return cost;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
 
     public String getDetail() {
@@ -50,15 +58,5 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Product(String name, double price, String detail, String image) {
-        this.name = name;
-        this.price = price;
-        this.detail = detail;
-        this.image = image;
-    }
-
-    public Product() {
     }
 }

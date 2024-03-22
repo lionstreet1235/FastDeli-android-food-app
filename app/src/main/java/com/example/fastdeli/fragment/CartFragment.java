@@ -16,13 +16,12 @@ import com.example.fastdeli.R;
 import com.example.fastdeli.model.Product;
 import com.example.fastdeli.adapter.ProductAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class CartFragment extends Fragment {
 
-    private List<Product> cartProducts = new ArrayList<>();
+    private List<Product> cartProducts;
     private RecyclerView recyclerView;
     private TextView tvItemCount;
     private TextView tvTotalPrice;
@@ -39,42 +38,45 @@ public class CartFragment extends Fragment {
 
         // Set up RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ProductAdapter adapter = new ProductAdapter();
+        ProductAdapter adapter = new ProductAdapter(getActivity());
         recyclerView.setAdapter(adapter);
 
-        // Get product from arguments (you may need to pass product list through arguments)
-        Bundle args = getArguments();
-        if (args != null) {
-            Product product = args.getParcelable("product");
-            if (product != null) {
-                cartProducts.add(product);
-                // Update RecyclerView
-                adapter.setProducts(cartProducts);
-                // Update item count
-                updateItemCount();
-                // Update total price
-                updateTotalPrice();
-            }
+        // Check if cartProducts is not null
+        if (cartProducts != null) {
+            // Update RecyclerView with cartProducts
+            adapter.setProducts(cartProducts);
+            // Update item count
+            updateItemCount();
+            // Update total price
+            updateTotalPrice();
         }
 
         return view;
     }
 
+    // Method to update the item count
     private void updateItemCount() {
         int itemCount = cartProducts.size();
         tvItemCount.setText("Item count: " + itemCount);
     }
 
+    // Method to update the total price
     private void updateTotalPrice() {
         double totalPrice = calculateTotalPrice();
         tvTotalPrice.setText(String.format(Locale.getDefault(), "Total price: $%.2f", totalPrice));
     }
 
+    // Method to calculate the total price of all products in the cart
     private double calculateTotalPrice() {
         double totalPrice = 0;
         for (Product product : cartProducts) {
-            totalPrice += product.getPrice() * product.getQuantity();
+            totalPrice += product.getCost() * product.getQuantity();
         }
         return totalPrice;
+    }
+
+    // Setter method for cartProducts
+    public void setCartProducts(List<Product> cartProducts) {
+        this.cartProducts = cartProducts;
     }
 }
