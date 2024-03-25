@@ -15,7 +15,7 @@
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewOrder"
+        android:id="@+id/recyclerViewCart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -28,22 +28,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp">
-
-        <TextView
-            android:id="@+id/tvItemCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item count: 0"
-            android:textSize="16sp" />
-
         <TextView
             android:id="@+id/tvTotalPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
-            android:text="Total price: $0.00"
+            android:gravity="start"
+            android:text="Total: "
             android:textSize="16sp" />
+
+
+
 
     </LinearLayout>
 

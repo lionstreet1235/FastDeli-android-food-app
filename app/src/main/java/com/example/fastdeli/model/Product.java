@@ -20,6 +20,9 @@ public class Product {
 
     }
 
+    public Product(String productName, double productPrice) {
+    }
+
     public int getQuantity() {
         return quantity;
     }

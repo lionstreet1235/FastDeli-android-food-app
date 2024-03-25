@@ -1,5 +1,4 @@
 package com.example.fastdeli.fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fastdeli.R;
 import com.example.fastdeli.adapter.ProductAdapter;
-import com.example.fastdeli.model.Cart;
 import com.example.fastdeli.model.Product;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -26,7 +23,7 @@ public class OrderFragment extends Fragment implements ProductAdapter.OnAddButto
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
     private FirebaseFirestore db;
-    private Cart cart;
+
 
 
     @Override
@@ -37,13 +34,11 @@ public class OrderFragment extends Fragment implements ProductAdapter.OnAddButto
         recyclerView = view.findViewById(R.id.recyclerViewOrder);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ProductAdapter(getActivity());
-        cart = new Cart();
-        adapter.setCart(cart);
         recyclerView.setAdapter(adapter);
 
 
         db = FirebaseFirestore.getInstance();
-//        loadALLProducts();
+        loadALLProducts();
         Button allProductsButton = view.findViewById(R.id.All_product);
         Button comboForOneButton = view.findViewById(R.id.Combo_4_1);
         Button comboForGroupBox = view.findViewById(R.id.Combo_4_group);
