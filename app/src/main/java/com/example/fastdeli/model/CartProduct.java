@@ -7,10 +7,26 @@ public class CartProduct {
     private  String productName;
     private  Double productPrice;
 
-    private String image;
+    private String imageCart;
 
     private Integer quantity;
     private String documentId;
+
+    public String getImageCart() {
+        return imageCart;
+    }
+
+    public void setImageCart(String imageCart) {
+        this.imageCart = imageCart;
+    }
+
+    public CartProduct(String productName, Double productPrice, String imageCart, Integer quantity, String documentId) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.imageCart = imageCart;
+        this.quantity = quantity;
+        this.documentId = documentId;
+    }
 
     public String getDocumentId() {
         return documentId;
@@ -20,21 +36,9 @@ public class CartProduct {
         this.documentId = documentId;
     }
 
-    public CartProduct(String productName, Double productPrice, String image, Integer quantity, String documentId) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.image = image;
-        this.quantity = quantity;
-        this.documentId = documentId;
-    }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+
 
     public String getProductName() {
         return productName;

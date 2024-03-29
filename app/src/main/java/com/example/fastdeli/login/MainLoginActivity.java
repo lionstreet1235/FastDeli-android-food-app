@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fastdeli.MainActivity;
+import com.example.fastdeli.PurchaseHistory;
 import com.example.fastdeli.R;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +28,7 @@ public class MainLoginActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
 
-    Button logOut,changeProfileImage;
+    Button logOut,changeProfileImage, showHistory;
     ImageView backToHome;
     String userId;
     @Override
@@ -44,6 +45,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
 
         //anh xa du lieu
+        showHistory= findViewById(R.id.btnHistoryU);
         logOut=findViewById(R.id.btnLogOutU);
         backToHome=findViewById(R.id.ivBackToHome);
         email=findViewById(R.id.tvEmailDetailU);
@@ -82,6 +84,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
 
 
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +110,13 @@ public class MainLoginActivity extends AppCompatActivity {
                 i.putExtra("email","tuanduy1411@gmail.com");
                 i.putExtra("address","Hau Giang");
                 i.putExtra("phone","0909327716");
+                startActivity(i);
+            }
+        });
+        showHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainLoginActivity.this, PurchaseHistory.class);
                 startActivity(i);
             }
         });

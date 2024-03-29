@@ -6,7 +6,7 @@
     android:padding="16dp">
     <ImageView
         android:layout_width="120sp"
-        android:layout_height="100sp"
+        android:layout_height="125sp"
         android:id="@+id/ivCartImage">
 
 

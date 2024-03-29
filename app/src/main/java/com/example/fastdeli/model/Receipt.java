@@ -5,7 +5,49 @@ import com.google.firebase.Timestamp;
 import java.util.HashMap;
 
 public class Receipt {
-    private Timestamp time;
+    private Timestamp timestamp;
+
+    private Double Total;
+
+    private String productName;
+
+    private Integer quantity;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Receipt(Timestamp timestamp, Double total, String productName, Integer quantity, String username, HashMap<String, ItemDetails> items, double totalCost) {
+        this.timestamp = timestamp;
+        Total = total;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.username = username;
+        this.items = items;
+        this.totalCost = totalCost;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+
+    public void setTotal(Double total) {
+        Total = total;
+    }
+
     private String username;
     private HashMap<String, ItemDetails> items;
     private double totalCost;
@@ -14,19 +56,14 @@ public class Receipt {
         // Default constructor required for Firebase
     }
 
-    public Receipt(Timestamp time, String username) {
-        this.time = time;
-        this.username = username;
-        this.items = new HashMap<>();
-        this.totalCost = 0.0;
+
+
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getUsername() {
@@ -53,16 +90,10 @@ public class Receipt {
         this.totalCost = totalCost;
     }
 
-    public void addItem(String itemName, int quantity, double price) {
-        ItemDetails itemDetails = new ItemDetails(quantity, price);
-        items.put(itemName, itemDetails);
-        totalCost += quantity * price;
-    }
-
     @Override
     public String toString() {
         return "Receipt{" +
-                "time=" + time +
+                "timestamp=" + timestamp +
                 ", username='" + username + '\'' +
                 ", items=" + items +
                 ", totalCost=" + totalCost +
@@ -72,6 +103,10 @@ public class Receipt {
     public static class ItemDetails {
         private int quantity;
         private double price;
+
+        public ItemDetails() {
+            // Default constructor required for Firebase
+        }
 
         public ItemDetails(int quantity, double price) {
             this.quantity = quantity;

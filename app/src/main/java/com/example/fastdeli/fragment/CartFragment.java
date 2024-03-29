@@ -190,6 +190,8 @@ public class CartFragment extends Fragment {
                                     cartProduct.setDocumentId(documentId);
                                     cartItems.add(cartProduct);
                                 }
+                                String totalPriceString = String.format(Locale.getDefault(), "%.2f", totalPrice);
+                                tvTotalPrice.setText(  totalPriceString + " vnđ");
 
                                 // Hiển thị tổng giá tiền của giỏ hàng
 

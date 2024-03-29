@@ -2,17 +2,20 @@ package com.example.fastdeli.adapter;
 
 import static java.lang.String.valueOf;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.example.fastdeli.model.CartProduct;
 import com.example.fastdeli.model.Product;
 import com.example.fastdeli.R;
@@ -179,12 +182,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public void bind(CartProduct cartProduct) {
             productNameTextView.setText(cartProduct.getProductName());
             productPriceTextView.setText("Thành tiền: "+valueOf(cartProduct.getProductPrice()*cartProduct.getQuantity()));
-            if (cartProduct.getImage() != null && (cartProduct.getImage().startsWith("http://") || cartProduct.getImage().startsWith("https://"))) {
-                // Nếu là URL hợp lệ, sử dụng Glide để load hình ảnh
-                Glide.with(itemView.getContext()).load(cartProduct.getImage()).into(productImage);
-            } else {
-                productImage.setImageResource(R.drawable.mrfresh);
-            }
+            String url = cartProduct.getImageCart();
+            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/fastdeli-5cee0.appspot.com/o/001.jpg?alt=media&token=4b7f26d0-a4eb-4542-bb0c-0249a93ce1e1").into(productImage);
+
             productQuantity.setText(String.format("Số lượng: "+valueOf(cartProduct.getQuantity())));
         }
     }
